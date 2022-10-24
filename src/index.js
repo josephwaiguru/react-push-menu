@@ -59,7 +59,8 @@ export default class PushMenu extends Component {
       menu: this.state.pushInstance,
       node,
       propMap,
-      rootNode: this.props.nodes
+      rootNode: this.props.nodes,
+      nodeTitle
     };
     const LinkComponent = this.props.linkComponent || DefaultLinkComponent;
     return (
@@ -100,13 +101,17 @@ export default class PushMenu extends Component {
   render(){
     const propMap = Object.assign({}, defaultPropMaps, this.props.propMap);
     const nodeChildren = this.props.nodes[propMap.childPropName] || [];
+    const { backComponent, backIcon } = this.props;
+    const BackComponent = backComponent || DefaultBackComponent;
     return (
       <div className="rpm-container" id="rpm-container">
         <div className={`${this.classPrefix}mp-pusher`} id={`${this.classPrefix}mp-pusher`}>
-
           <nav id="rpm-mp-menu" className="rpm-mp-menu">
   					<div className="rpm-mp-level">
   						<div className="rpm-mp-header">{this.props.nodes.header}</div>
+              <div className={`rpm-inline-block ${this.classPrefix}mp-back`}>
+                <BackComponent classPrefix={this.classPrefix} backIcon={backIcon} />
+              </div>
               <ul>
                 {nodeChildren && nodeChildren.map((node, key) => {
                   return (
