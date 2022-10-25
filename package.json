@@ -14,6 +14,7 @@
     "dist": "NODE_ENV=production npm run clean && webpack",
     "bablify": "babel src -d build",
     "prepublish": "npm run bablify",
+    "prepare": "npm run prepublish",
     "start": "npm run build && webpack-dev-server"
   },
   "peerDependencies": {
