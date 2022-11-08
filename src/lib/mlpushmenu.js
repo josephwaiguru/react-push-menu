@@ -185,6 +185,8 @@ module.exports = (function (window) {
 					el.addEventListener('click', function(ev) {
 						ev.stopPropagation();
 						var level = this.getAttribute('data-level');
+						console.log('level element click --> ', level)
+
 						if (level <= self.level) {
 							ev.stopPropagation();
 							self.level = this.getAttribute('data-level');
