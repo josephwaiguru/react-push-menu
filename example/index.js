@@ -56,7 +56,7 @@ class Page extends React.Component{
         linkComponent={Link}
         isOpen={false}
         nodes={this.state.menu}
-        type={'cover'}
+        type={'overlap'}
         propMap={{url: 'link'}}>
 
         <div className="rpm-trigger" id="rpm-trigger" >

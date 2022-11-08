@@ -176,6 +176,23 @@ module.exports = (function (window) {
 					}
 				});
 			});
+
+			// Navigate to a sublevel by clicking the level container
+			var levelElements = Array.prototype.slice.call(document.querySelectorAll('.' + classPrefix + 'mp-level'));
+
+			if(levelElements) {
+				levelElements.forEach(function (el, i) {
+					el.addEventListener('click', function(ev) {
+						ev.stopPropagation();
+						var level = this.getAttribute('data-level');
+						if (level <= self.level) {
+							ev.stopPropagation();
+							self.level = this.getAttribute('data-level');
+							self.level === 0 ? self._resetMenu() : self._closeMenu();
+						}
+					})
+				})
+			}			
 		},
 		_openMenu: function (subLevel, init) {
 			var self = this;
